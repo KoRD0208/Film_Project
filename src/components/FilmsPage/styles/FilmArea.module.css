@@ -1,0 +1,7 @@
+.price {
+    position: absolute;
+    left: -4px;
+    top: 20px;
+    background: #57f31e;
+    box-shadow: 2px 3px 6px -8px rgba(0,0,0,0.9);
+}
