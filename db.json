@@ -1,0 +1,45 @@
+{
+  "films": [
+    {
+      "id": 0,
+      "title": "Legend of the Seeker",
+      "director": "Stephen Tolkin",
+      "duration": 93,
+      "price": 48.3,
+      "img": "https://m.media-amazon.com/images/M/MV5BODcyNTM4MjUwOF5BMl5BanBnXkFtZTcwNTE5Mjc2Nw@@._V1_.jpg",
+      "featured": false,
+      "description": "After the mysterious murder of his father, a son's search for answers begins a momentous fight against tyranny."
+    },
+    {
+      "id": 3,
+      "title": "Siji: Driver",
+      "director": "David Chai",
+      "duration": 88,
+      "price": 35.2,
+      "img": "https://m.media-amazon.com/images/M/MV5BNTI4YTYxNzctMzgzOS00ZDY1LWFjODgtNjMwNmMwMjVhZTViXkEyXkFqcGdeQXVyMzQxNDMxMzI@._V1_.jpg",
+      "featured": true,
+      "description": "After a driver rescues a passenger from an abusive boyfriend, he discovers she is a human trafficking victim. But in order to free her, he must give up the thing he loves the most."
+    },
+    {
+      "id": 1644582210587,
+      "title": "Transformers 4",
+      "director": "Michael Bay",
+      "duration": "160",
+      "price": "120",
+      "img": "https://m.media-amazon.com/images/M/MV5BN2YwOWM4ODgtZTMzMi00ZmFmLTk5NTEtNmY4ZDcwNzQxNDhjXkEyXkFqcGdeQXVyNTI0NzAyNjY@._V1_.jpg",
+      "featured": false,
+      "description": "Cool Film"
+    },
+    {
+      "id": 1644596621572,
+      "title": "Real Steel",
+      "director": "KTOTO",
+      "duration": "fdsgsdf",
+      "price": 345,
+      "img": "https://flxt.tmsimg.com/assets/p8443992_p_v10_ae.jpg",
+      "featured": false,
+      "description": "Cool Film"
+    }
+  ],
+  "users": []
+}

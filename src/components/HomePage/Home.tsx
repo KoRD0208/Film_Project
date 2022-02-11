@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
 
 const Home = () => {
-    return (
-        <h1>
-           Its home page)
-        </h1>
-    );
+  return (
+    <div
+      style={{
+        textAlign: "center",
+      }}
+    >
+      <h1>Hello!</h1>
+      <h2>Your favorite films will be stored here!</h2>
+    </div>
+  );
 };
 
 export default Home;
