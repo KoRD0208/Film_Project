@@ -10,9 +10,15 @@ import {
 import useFilmInfo from "./useFilmInfo";
 import classes from "./styles/Textarea.module.css";
 import FilmsContext from "../../FilmsContext";
-import { addFilm, editFilm } from "../filmsServices";
+import { editFilm } from "../filmsServices";
+import { handleChange } from "../handleChange";
+import { IFilm } from "../../types";
 
-const FilmDetailsForAdmin = ({ film }: any) => {
+interface FilmDetailsForAdminProps {
+  film: IFilm;
+}
+
+const FilmDetailsForAdmin = ({ film }: FilmDetailsForAdminProps) => {
   const {
     title,
     setTitle,
@@ -23,14 +29,7 @@ const FilmDetailsForAdmin = ({ film }: any) => {
     price,
     setPrice,
   } = useFilmInfo(film);
-  const { films, setFilms } = useContext(FilmsContext);
-
-  function handleChange(
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    hook: any
-  ) {
-    hook(e.target.value);
-  }
+  const { setFilms } = useContext(FilmsContext);
 
   async function refactorFilm() {
     console.log("Applied");
@@ -42,10 +41,8 @@ const FilmDetailsForAdmin = ({ film }: any) => {
           item.director = director;
           item.description = description;
           item.price = Number(price);
-          console.log(oldFilms);
         }
       });
-      console.log(film);
       return [...oldFilms];
     });
     await editFilm(film);

@@ -41,5 +41,22 @@
       "description": "Cool Film"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": 0,
+      "name": "Oleg",
+      "username": "im_cool",
+      "email": "oleg@gmail.com",
+      "password": "1234",
+      "isAdmin": true
+    },
+    {
+      "id": 1,
+      "name": "Oleg",
+      "username": "im_cool",
+      "email": "oleg@gmail.com",
+      "password": "oleg45",
+      "isAdmin": false
+    }
+  ]
 }

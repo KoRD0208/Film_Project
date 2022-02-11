@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Navigate } from "react-router-dom";
 

@@ -7,6 +7,10 @@ import MovieIcon from "@mui/icons-material/Movie";
 import HomeIcon from "@mui/icons-material/Home";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
+interface HeaderProps {
+  authorized: boolean;
+}
+
 const styles = (isActive) => {
   return {
     borderBottom: isActive ? "2px solid #000" : "none",
@@ -15,7 +19,7 @@ const styles = (isActive) => {
   };
 };
 
-const Header = ({ authorized }: any) => {
+const Header = ({ authorized }: HeaderProps) => {
   return (
     <nav className={classes.header}>
       <ul className={classes.menu}>

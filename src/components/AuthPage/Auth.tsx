@@ -4,25 +4,9 @@ import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../../types";
 import { handleChange } from "../handleChange";
+import { getUsers } from "../usersServices";
 
-export const usersData = [
-  {
-    id: 0,
-    name: "Oleg",
-    username: "im_cool",
-    email: "oleg@gmail.com",
-    password: "1234",
-    isAdmin: true,
-  },
-  {
-    id: 1,
-    name: "Oleg",
-    username: "im_cool",
-    email: "oleg@gmail.com",
-    password: "oleg45",
-    isAdmin: false,
-  },
-];
+// export const usersData = ;
 
 interface AuthProps {
   handleAuth: (valueAuth: boolean, valueAdmin: boolean) => void;
@@ -38,16 +22,12 @@ const Auth = ({ handleAuth }: AuthProps) => {
   const [err, setErr] = useState(false);
 
   useEffect(() => {
-    let usersFromLocalStorage: User[] = JSON.parse(
-      localStorage.getItem("users")
-    );
-
-    if (usersFromLocalStorage === null) {
-      localStorage.setItem("users", JSON.stringify(usersData));
+    async function getData() {
+      let usersFromDB = await getUsers();
+      setUsers(usersFromDB);
     }
 
-    console.log(usersFromLocalStorage);
-    setUsers(usersFromLocalStorage);
+    getData();
   }, []);
 
   function checkUser(e: React.SyntheticEvent) {

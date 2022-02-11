@@ -5,8 +5,12 @@ import FilmDetailsForAdmin from "./FilmDetailsForAdmin";
 import FilmsContext from "../../FilmsContext";
 import { getFilms } from "../filmsServices";
 
-const FilmDetailsPage = ({ admin }: any) => {
-  let { films, setFilms } = useContext(FilmsContext);
+interface FilmDetailsPageProps {
+  admin: boolean;
+}
+
+const FilmDetailsPage = ({ admin }: FilmDetailsPageProps) => {
+  let { films } = useContext(FilmsContext);
   useEffect(() => {
     async function getData() {}
 
@@ -15,7 +19,7 @@ const FilmDetailsPage = ({ admin }: any) => {
 
   let params = useParams<{ id: string }>();
   console.log(params);
-  let film = films.find((item: any) => item.id === Number(params.id));
+  let film = films.find((item) => item.id === Number(params.id));
   console.log(film);
   if (admin) {
     return <FilmDetailsForAdmin film={film} />;

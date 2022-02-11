@@ -2,7 +2,11 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const LogOut = ({ handle }: any) => {
+interface LogoutProps {
+  handle: (valueAuth: boolean, valueAdmin?: boolean) => void;
+}
+
+const LogOut = ({ handle }: LogoutProps) => {
   const navigate = useNavigate();
 
   function logout() {

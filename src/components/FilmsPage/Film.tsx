@@ -10,8 +10,15 @@ import { Link } from "react-router-dom";
 import classes from "./styles/FilmArea.module.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
+import { IFilm } from "../../types";
 
-const Film = ({ film, admin, remove }: any) => {
+interface FilmProps {
+  film: IFilm;
+  admin: boolean;
+  remove: (film: IFilm) => void;
+}
+
+const Film = ({ film, admin, remove }: FilmProps) => {
   return (
     <Card
       sx={{

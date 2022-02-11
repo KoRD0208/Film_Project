@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { getFilms } from "../filmsServices";
+import { IFilm } from "../../types";
 
-const FilmDetailsForUser = ({ film }: any) => {
+interface FilmDetailsForUserProps {
+  film: IFilm;
+}
+
+const FilmDetailsForUser = ({ film }: FilmDetailsForUserProps) => {
   return (
     <div style={{ display: "flex" }}>
       <Card

@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
 import classes from "./FilmPage.module.css";
 import Film from "./Film";
-// import {data} from "../../films"
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { IFilm } from "../../types";
 import { deleteFilm } from "../filmsServices";
 import FilmsContext from "../../FilmsContext";
 
-const FilmsPage = ({ admin }: any) => {
+interface FilmsPageProps {
+  admin: boolean;
+}
+
+const FilmsPage = ({ admin }: FilmsPageProps) => {
   const { films, setFilms } = useContext(FilmsContext);
   let navigate = useNavigate();
   console.log(films);
