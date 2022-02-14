@@ -5,9 +5,10 @@ import {
   Typography,
   Button,
   CardMedia,
+  createTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import classes from "./styles/FilmArea.module.css";
+import classes from "./styles/Film.module.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import { IFilm } from "../../types";
@@ -28,12 +29,12 @@ const Film = ({ film, admin, remove }: FilmProps) => {
       }}
     >
       <CardContent sx={{ position: "relative" }}>
-        <CardMedia
-          component="img"
-          height="300"
-          src={film.img}
-          alt="Paella dish"
-        />
+        <Link to={`/films/${film.id}`} style={{ textDecoration: "none" }}>
+          <div className={classes.img}>
+            <img src={film.img} alt="film-img" />
+          </div>
+        </Link>
+
         <span className={classes.price}>{film.price}$</span>
         <Typography
           gutterBottom

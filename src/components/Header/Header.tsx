@@ -11,7 +11,7 @@ interface HeaderProps {
   authorized: boolean;
 }
 
-const styles = (isActive) => {
+const styles = (isActive: boolean) => {
   return {
     borderBottom: isActive ? "2px solid #000" : "none",
     paddingBottom: "28px",

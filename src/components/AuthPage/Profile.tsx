@@ -3,9 +3,9 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { Navigate } from "react-router-dom";
 
 const Profile = () => {
-  const user = JSON.parse(localStorage.getItem("authorizedUser"));
+  const user = JSON.parse(localStorage.getItem("authorizedUser") || "");
 
-  if (JSON.parse(localStorage.getItem("isAuthorized")).auth) {
+  if (JSON.parse(localStorage.getItem("isAuthorized") || "").auth) {
     return (
       <div style={{ textAlign: "center" }}>
         <h1>My profile</h1>

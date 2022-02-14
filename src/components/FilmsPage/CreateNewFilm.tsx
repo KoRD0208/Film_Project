@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { addFilm } from "../filmsServices";
 import FilmsContext from "../../FilmsContext";
 import { handleChange } from "../handleChange";
+import { IFilm } from "../../types";
 
 const CreateNewFilm = () => {
   const {
@@ -18,7 +19,7 @@ const CreateNewFilm = () => {
     setDuration,
     price,
     setPrice,
-  } = useFilmInfo([]);
+  } = useFilmInfo();
   const [imgUrl, setUrl] = useState("");
   const navigate = useNavigate();
   const { setFilms } = useContext(FilmsContext);

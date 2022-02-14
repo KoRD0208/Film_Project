@@ -24,4 +24,9 @@
 .item a {
     color: #000;
     text-decoration: none;
+    transition: all ease .3s;
+}
+
+.item a:hover {
+    color: rgb(24, 118, 210);
 }

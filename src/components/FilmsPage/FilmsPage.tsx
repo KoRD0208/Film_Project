@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./FilmPage.module.css";
 import Film from "./Film";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { IFilm } from "../../types";
 import { deleteFilm } from "../filmsServices";
 import FilmsContext from "../../FilmsContext";
+import SearchFilms from "../SearchFilms/SearchFilms";
 
 interface FilmsPageProps {
   admin: boolean;
@@ -13,15 +14,19 @@ interface FilmsPageProps {
 
 const FilmsPage = ({ admin }: FilmsPageProps) => {
   const { films, setFilms } = useContext(FilmsContext);
+  const [searchVal, setSearchVal] = useState("");
   let navigate = useNavigate();
-  console.log(films);
+
+  function handleChange(value) {
+    setSearchVal(value);
+  }
 
   function addFilm() {
     console.log("Yes");
     navigate(`/films/newfilm`);
   }
 
-  async function removeFilm(film) {
+  async function removeFilm(film: IFilm) {
     await deleteFilm(film.id);
     setFilms((prevFilms) => {
       return prevFilms.filter((item) => item.id !== film.id);
@@ -36,15 +41,25 @@ const FilmsPage = ({ admin }: FilmsPageProps) => {
           Add film
         </Button>
       )}
+      <SearchFilms value={searchVal} changeState={handleChange} />
       <div
         className={classes.list}
         style={{ display: "flex", flexWrap: "wrap" }}
       >
-        {films.map((film: IFilm) => {
-          return (
-            <Film film={film} admin={admin} remove={removeFilm} key={film.id} />
-          );
-        })}
+        {films
+          .filter((film) =>
+            film.title.toLowerCase().includes(searchVal.toLowerCase())
+          )
+          .map((film: IFilm) => {
+            return (
+              <Film
+                film={film}
+                admin={admin}
+                remove={removeFilm}
+                key={film.id}
+              />
+            );
+          })}
       </div>
     </div>
   );

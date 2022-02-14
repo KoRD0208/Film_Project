@@ -1,16 +1,19 @@
-import { useContext, useState } from "react";
+import React, { Dispatch, SetStateAction, useContext, useState } from "react";
 import FilmsContext from "../../FilmsContext";
+import { IFilm } from "../../types";
 
-const UseFilmInfo = (initialState) => {
-  const [title, setTitle] = useState<string>(initialState.title || "");
-  const [director, setDirector] = useState<string>(initialState.director || "");
+const UseFilmInfo = (initialState?: IFilm) => {
+  const [title, setTitle] = useState<string>(initialState?.title || "");
+  const [director, setDirector] = useState<string>(
+    initialState?.director || ""
+  );
   const [description, setDescription] = useState<string>(
-    initialState.description || ""
+    initialState?.description || ""
   );
   const [duration, setDuration] = useState<string>(
-    initialState.description || ""
+    initialState?.description || ""
   );
-  const [price, setPrice] = useState<string>(initialState.price || "");
+  const [price, setPrice] = useState<string>(initialState?.price || "");
   return {
     title,
     setTitle,

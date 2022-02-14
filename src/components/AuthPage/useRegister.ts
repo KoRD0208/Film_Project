@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { User } from "../../types";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
+import UsersContext from "../../UsersContext";
 
-function useRegister(handle) {
+function useRegister(
+  handle: (valueAuth: boolean, valueAdmin?: boolean) => void
+) {
   const { email, setEmail, password, setPassword, handleChange } = useAuth();
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  const [users, setUsers] = useState<User[]>([]);
+  const { users, setUsers } = useContext(UsersContext);
   const [error, setError] = useState(false);
 
   const [emailErr, setEmailErr] = useState(false);
@@ -31,7 +33,9 @@ function useRegister(handle) {
     }
   }
 
-  function passwordHandler(e) {
+  function passwordHandler(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) {
     setPassword(e.target.value);
     if (e.target.value.length < 4) {
       setPasswordErr(true);
@@ -42,7 +46,7 @@ function useRegister(handle) {
 
   function register(e: React.SyntheticEvent) {
     e.preventDefault();
-
+    console.log(users);
     users.forEach((user) => {
       if (user.email === email || user.username === username) {
         setError(true);
@@ -61,6 +65,7 @@ function useRegister(handle) {
             email,
             password,
             isAdmin: false,
+            favorites: [],
           },
         ];
         setUsers(newUsers);

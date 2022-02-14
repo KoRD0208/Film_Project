@@ -4,7 +4,11 @@ import { User } from "../../types";
 import { Link } from "react-router-dom";
 import useRegister from "./useRegister";
 
-const Register = ({ handle }) => {
+interface RegisterProps {
+  handle: (valueAuth: boolean, valueAdmin?: boolean) => void;
+}
+
+const Register = ({ handle }: RegisterProps) => {
   const {
     email,
     password,
@@ -22,12 +26,12 @@ const Register = ({ handle }) => {
     register,
   } = useRegister(handle);
 
-  useEffect(() => {
-    let usersFromLocalStorage: User[] = JSON.parse(
-      localStorage.getItem("users")
-    );
-    setUsers(usersFromLocalStorage);
-  }, []);
+  // useEffect(() => {
+  //   let usersFromLocalStorage: User[] = JSON.parse(
+  //     localStorage.getItem("users")
+  //   );
+  //   setUsers(usersFromLocalStorage);
+  // }, []);
 
   return (
     <div style={{ textAlign: "center" }}>

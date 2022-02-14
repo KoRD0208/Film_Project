@@ -5,7 +5,7 @@ interface usePullStorage {
 const usePullStorage = (auth: usePullStorage) => {
   const authStatus = JSON.parse(localStorage.getItem("isAuthorized"));
   const adminStatus = JSON.parse(localStorage.getItem("authorizedUser"));
-  console.log(authStatus);
+  // console.log(authStatus);
   if (authStatus === null) {
     localStorage.setItem("isAuthorized", JSON.stringify(auth));
   }

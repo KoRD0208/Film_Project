@@ -8,19 +8,20 @@ export async function getFilms(): Promise<IFilm[]> {
   return await data.json();
 }
 
-export function getFilmsFromLS() {
-  return JSON.parse(localStorage.getItem("films"));
+export async function getFilm(id: number): Promise<IFilm> {
+  const film = await fetch(`${SERVER_URL}/${id}`);
+  return await film.json();
 }
 
-export async function updateFilms(updatedFilms) {
-  await fetch(SERVER_URL, {
-    method: "POST",
-    body: JSON.stringify(updatedFilms),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-}
+// export async function updateFilms(updatedFilms: ) {
+//   await fetch(SERVER_URL, {
+//     method: "POST",
+//     body: JSON.stringify(updatedFilms),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+// }
 
 export async function deleteFilm(id: number) {
   await fetch(`${SERVER_URL}/${id}`, {

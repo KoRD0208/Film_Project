@@ -1,14 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  TextField,
-  Typography,
-} from "@mui/material";
+import React, { useContext } from "react";
+import { Button, Card, CardContent, CardMedia, TextField } from "@mui/material";
 import useFilmInfo from "./useFilmInfo";
-import classes from "./styles/Textarea.module.css";
+import classes from "./styles/FilmsDetails.module.css";
 import FilmsContext from "../../FilmsContext";
 import { editFilm } from "../filmsServices";
 import { handleChange } from "../handleChange";
@@ -40,7 +33,7 @@ const FilmDetailsForAdmin = ({ film }: FilmDetailsForAdminProps) => {
           item.title = title;
           item.director = director;
           item.description = description;
-          item.price = Number(price);
+          item.price = String(price);
         }
       });
       return [...oldFilms];
@@ -73,6 +66,7 @@ const FilmDetailsForAdmin = ({ film }: FilmDetailsForAdminProps) => {
               onChange={(e) => handleChange(e, setDirector)}
             />
             <TextField
+              type="number"
               value={price}
               onChange={(e) => handleChange(e, setPrice)}
             />

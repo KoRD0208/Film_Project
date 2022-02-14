@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Alert, TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../../types";
 import { handleChange } from "../handleChange";
 import { getUsers } from "../usersServices";
+import UsersContext from "../../UsersContext";
 
 // export const usersData = ;
 
 interface AuthProps {
-  handleAuth: (valueAuth: boolean, valueAdmin: boolean) => void;
+  handleAuth: (valueAuth: boolean, valueAdmin?: boolean) => void;
 }
 
 const Auth = ({ handleAuth }: AuthProps) => {
   const [inputVal, setInputVal] = useState("");
   const [password, setPassword] = useState("");
-  const [users, setUsers] = useState<User[]>(
-    JSON.parse(localStorage.getItem("users")) || []
-  );
+  const { users } = useContext(UsersContext);
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
+  console.log(users);
 
-  useEffect(() => {
-    async function getData() {
-      let usersFromDB = await getUsers();
-      setUsers(usersFromDB);
-    }
+  // useEffect(() => {
+  //   async function getData() {
+  //     setUsers(await getUsers());
+  //   }
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
 
   function checkUser(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -51,7 +50,11 @@ const Auth = ({ handleAuth }: AuthProps) => {
       <h1>Login Form</h1>
       <form
         onSubmit={checkUser}
-        style={{ display: "inline-flex", flexDirection: "column" }}
+        style={{
+          display: "inline-flex",
+          flexDirection: "column",
+          width: "450px",
+        }}
       >
         <TextField
           type="text"

@@ -5,6 +5,7 @@ export interface User {
   email: string;
   password: string;
   isAdmin: boolean;
+  favorites: IFilm[];
 }
 
 export interface IFilm {
@@ -12,7 +13,7 @@ export interface IFilm {
   title: string;
   director: string;
   duration: number | string;
-  price: number | string;
+  price: string;
   img: string;
   featured: boolean;
   description: string;
