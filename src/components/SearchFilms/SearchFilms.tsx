@@ -1,8 +1,15 @@
 import React from "react";
 import { TextField } from "@mui/material";
 
-const SearchFilms = ({ value, changeState }) => {
-  function handleChange(e) {
+interface SearchFilmsProps {
+  value: string;
+  changeState: (value: string) => void;
+}
+
+const SearchFilms = ({ value, changeState }: SearchFilmsProps) => {
+  function handleChange(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) {
     changeState(e.target.value);
   }
 

@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { Button, Card, CardContent, TextField } from "@mui/material";
 import useFilmInfo from "./useFilmInfo";
 import { useNavigate } from "react-router-dom";
-import { addFilm } from "../filmsServices";
-import FilmsContext from "../../FilmsContext";
-import { handleChange } from "../handleChange";
+import { addFilm } from "../../services/filmsServices";
+import FilmsContext from "../../contexts/FilmsContext";
+import { handleChange } from "../../helpfullFuncs/handleChange";
 import { IFilm } from "../../types";
 
 const CreateNewFilm = () => {

@@ -1,26 +1,17 @@
 import React from "react";
-import { IFilm } from "../types";
+import { IFilm, User } from "../types";
+import axios from "axios";
 
 const SERVER_URL = "http://localhost:4000/films";
 
-export async function getFilms(): Promise<IFilm[]> {
-  const data = await fetch(SERVER_URL);
-  return await data.json();
+export async function getFilms() {
+  const response = await axios.get<IFilm[]>(SERVER_URL);
+  return response.data;
 }
 
-export async function getFilm(id: number): Promise<IFilm> {
-  const film = await fetch(`${SERVER_URL}/${id}`);
-  return await film.json();
-}
-
-// export async function updateFilms(updatedFilms: ) {
-//   await fetch(SERVER_URL, {
-//     method: "POST",
-//     body: JSON.stringify(updatedFilms),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
+// export async function getFilms(): Promise<IFilm[]> {
+//   const data = await fetch(SERVER_URL);
+//   return await data.json();
 // }
 
 export async function deleteFilm(id: number) {
@@ -38,6 +29,14 @@ export async function editFilm(updatedFilm: IFilm) {
     },
   });
 }
+
+// export async function addFilm(newFilm: IFilm) {
+//   const response = await axios.post(SERVER_URL, {
+//     method: "POST",
+//     body: newFilm,
+//   });
+//   return response.data;
+// }
 
 export async function addFilm(newFilm: IFilm) {
   await fetch(SERVER_URL, {

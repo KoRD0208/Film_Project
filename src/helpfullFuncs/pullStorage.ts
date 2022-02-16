@@ -3,19 +3,25 @@ interface usePullStorage {
 }
 
 const usePullStorage = (auth: usePullStorage) => {
-  const authStatus = JSON.parse(localStorage.getItem("isAuthorized"));
-  const adminStatus = JSON.parse(localStorage.getItem("authorizedUser"));
+  const authStatus = localStorage.getItem("isAuthorized");
+  const adminStatus = localStorage.getItem("authorizedUser");
+  let parsedAuth;
+  let parsedAdmin;
   // console.log(authStatus);
-  if (authStatus === null) {
+  if (authStatus == null) {
     localStorage.setItem("isAuthorized", JSON.stringify(auth));
+  } else {
+    parsedAuth = JSON.parse(authStatus);
   }
   if (adminStatus === null) {
     localStorage.setItem("authorizedUser", JSON.stringify({}));
+  } else {
+    parsedAdmin = JSON.parse(adminStatus);
   }
 
   return {
-    authStatus,
-    adminStatus,
+    parsedAuth,
+    parsedAdmin,
   };
 };
 

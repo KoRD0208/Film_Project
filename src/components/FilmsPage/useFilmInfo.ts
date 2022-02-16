@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useContext, useState } from "react";
-import FilmsContext from "../../FilmsContext";
+import FilmsContext from "../../contexts/FilmsContext";
 import { IFilm } from "../../types";
 
 const UseFilmInfo = (initialState?: IFilm) => {

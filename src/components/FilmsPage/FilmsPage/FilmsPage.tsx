@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import classes from "./FilmPage.module.css";
-import Film from "./Film";
+import Film from "../Film/Film";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
-import { IFilm } from "../../types";
-import { deleteFilm } from "../filmsServices";
-import FilmsContext from "../../FilmsContext";
-import SearchFilms from "../SearchFilms/SearchFilms";
+import { IFilm } from "../../../types";
+import { deleteFilm } from "../../../services/filmsServices";
+import FilmsContext from "../../../contexts/FilmsContext";
+import SearchFilms from "../../SearchFilms/SearchFilms";
 
 interface FilmsPageProps {
   admin: boolean;
@@ -17,7 +17,7 @@ const FilmsPage = ({ admin }: FilmsPageProps) => {
   const [searchVal, setSearchVal] = useState("");
   let navigate = useNavigate();
 
-  function handleChange(value) {
+  function handleChange(value: string) {
     setSearchVal(value);
   }
 
@@ -48,7 +48,7 @@ const FilmsPage = ({ admin }: FilmsPageProps) => {
       >
         {films
           .filter((film) =>
-            film.title.toLowerCase().includes(searchVal.toLowerCase())
+            film?.title.toLowerCase().includes(searchVal.toLowerCase())
           )
           .map((film: IFilm) => {
             return (

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { getFilms } from "../filmsServices";
-import { IFilm } from "../../types";
+import { getFilms } from "../../../services/filmsServices";
+import { IFilm } from "../../../types";
 
 interface FilmDetailsForUserProps {
   film: IFilm;

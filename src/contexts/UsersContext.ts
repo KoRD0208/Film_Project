@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { User } from "./types";
+import { User } from "../types";
 
 interface IUsersContext {
   users: User[];

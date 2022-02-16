@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Button, Card, CardContent, CardMedia, TextField } from "@mui/material";
-import useFilmInfo from "./useFilmInfo";
-import classes from "./styles/FilmsDetails.module.css";
-import FilmsContext from "../../FilmsContext";
-import { editFilm } from "../filmsServices";
-import { handleChange } from "../handleChange";
-import { IFilm } from "../../types";
+import useFilmInfo from "../useFilmInfo";
+import classes from "./FilmsDetails.module.css";
+import FilmsContext from "../../../contexts/FilmsContext";
+import { editFilm } from "../../../services/filmsServices";
+import { handleChange } from "../../../helpfullFuncs/handleChange";
+import { IFilm } from "../../../types";
 
 interface FilmDetailsForAdminProps {
   film: IFilm;

@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Home from "./components/HomePage/Home";
-import FilmsPage from "./components/FilmsPage/FilmsPage";
+import FilmsPage from "./components/FilmsPage/FilmsPage/FilmsPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Alert } from "@mui/material";
-import FilmDetailsPage from "./components/FilmsPage/FilmDetailsPage";
+import FilmDetailsPage from "./components/FilmsPage/FilmDetails/FilmDetailsPage";
 import Auth from "./components/AuthPage/Auth";
 import Register from "./components/AuthPage/Register";
 import LogOut from "./components/AuthPage/LogOut";
 import Profile from "./components/AuthPage/Profile";
 import CreateNewFilm from "./components/FilmsPage/CreateNewFilm";
-import usePullStorage from "./components/pullStorage";
-import FilmsContext from "./FilmsContext";
+import usePullStorage from "./helpfullFuncs/pullStorage";
+import FilmsContext from "./contexts/FilmsContext";
 import { IFilm, User } from "./types";
-import { getFilms } from "./components/filmsServices";
-import WelcomePage from "./components/WelcomePage";
-import UsersContext from "./UsersContext";
-import { getUsers } from "./components/usersServices";
+import { getFilms } from "./services/filmsServices";
+import WelcomePage from "./components/WelcomePage/WelcomePage";
+import UsersContext from "./contexts/UsersContext";
+import { getUsers } from "./services/usersServices";
 
 const keepAuth = {
   auth: false,
@@ -28,7 +28,7 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [isAuthorized, setAuth] = useState(false);
   const [isAdmin, setAdmin] = useState(false);
-  const { authStatus, adminStatus } = usePullStorage(keepAuth);
+  const { parsedAuth, parsedAdmin } = usePullStorage(keepAuth);
 
   useEffect(() => {
     async function getData() {
@@ -36,8 +36,8 @@ function App() {
       setUsers(await getUsers());
     }
 
-    setAdmin(adminStatus?.isAdmin || false);
-    setAuth(authStatus?.auth || false);
+    setAdmin(parsedAdmin?.isAdmin || false);
+    setAuth(parsedAuth?.auth || false);
 
     getData();
   }, []);

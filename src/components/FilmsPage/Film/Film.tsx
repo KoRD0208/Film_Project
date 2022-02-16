@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -8,10 +8,12 @@ import {
   createTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import classes from "./styles/Film.module.css";
+import classes from "./Film.module.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import { IFilm } from "../../types";
+import { IFilm } from "../../../types";
+import StarIcon from "@mui/icons-material/Star";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
 
 interface FilmProps {
   film: IFilm;
@@ -28,6 +30,15 @@ const Film = ({ film, admin, remove }: FilmProps) => {
         overflow: "initial",
       }}
     >
+      {/*{isFavorite ? (*/}
+      {/*  <div style={{ position: "absolute" }}>*/}
+      {/*    <StarIcon />*/}
+      {/*  </div>*/}
+      {/*) : (*/}
+      {/*  <div style={{ position: "absolute" }}>*/}
+      {/*    <StarOutlineIcon />*/}
+      {/*  </div>*/}
+      {/*)}*/}
       <CardContent sx={{ position: "relative" }}>
         <Link to={`/films/${film.id}`} style={{ textDecoration: "none" }}>
           <div className={classes.img}>

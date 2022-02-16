@@ -3,9 +3,9 @@ import { Alert, TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../../types";
-import { handleChange } from "../handleChange";
-import { getUsers } from "../usersServices";
-import UsersContext from "../../UsersContext";
+import { handleChange } from "../../helpfullFuncs/handleChange";
+import { getUsers } from "../../services/usersServices";
+import UsersContext from "../../contexts/UsersContext";
 
 // export const usersData = ;
 

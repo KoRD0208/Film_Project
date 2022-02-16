@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { IFilm } from "./types";
+import { IFilm } from "../types";
 
 interface IFilmsContext {
   films: IFilm[];

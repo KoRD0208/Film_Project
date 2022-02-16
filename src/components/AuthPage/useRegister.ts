@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
-import UsersContext from "../../UsersContext";
+import UsersContext from "../../contexts/UsersContext";
 
 function useRegister(
   handle: (valueAuth: boolean, valueAdmin?: boolean) => void

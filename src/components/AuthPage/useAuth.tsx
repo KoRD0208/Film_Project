@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { handleChange } from "../handleChange";
+import { handleChange } from "../../helpfullFuncs/handleChange";
 
 function useAuth() {
   const [email, setEmail] = useState("");
